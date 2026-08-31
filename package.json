@@ -10,6 +10,10 @@
     "test": "node --env-file-if-exists=.env --test",
     "seed": "node --env-file-if-exists=.env server/seed.js",
     "preflight": "node --env-file-if-exists=.env server/preflight.js"
+    ,"cf:dev": "npm run build && npx wrangler@4.127.1 dev"
+    ,"cf:db:create": "npx wrangler@4.127.1 d1 create line-stretch-check"
+    ,"cf:db:migrate": "npx wrangler@4.127.1 d1 migrations apply line-stretch-check --remote"
+    ,"cf:deploy": "npm run build && npx wrangler@4.127.1 deploy"
   },
   "dependencies": {
     "@line/liff": "^2.27.2",

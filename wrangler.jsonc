@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "line-stretch-check",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-08-31",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "line-stretch-check",
+    "database_id": "REPLACE_AFTER_CREATE",
+    "migrations_dir": "migrations"
+  }],
+  "triggers": { "crons": ["0 * * * *"] },
+  "vars": { "NODE_ENV": "production", "LIFF_ID": "" }
+}
