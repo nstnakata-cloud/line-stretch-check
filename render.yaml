@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: line-stretch-check
+    runtime: docker
+    healthCheckPath: /api/health
+    disk:
+      name: stretch-check-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_PATH
+        value: /app/data/stretch-check.db
+      - key: APP_URL
+        sync: false
+      - key: LIFF_ID
+        sync: false
+      - key: LINE_CHANNEL_ACCESS_TOKEN
+        sync: false
+      - key: LINE_CHANNEL_SECRET
+        sync: false
+      - key: ADMIN_TOKEN
+        generateValue: true
+      - key: CRON_SECRET
+        generateValue: true
